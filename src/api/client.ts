@@ -1,5 +1,5 @@
 const API_BASE_URL = resolveApiBaseUrl();
-const API_TIMEOUT_MS = 15000;
+const API_TIMEOUT_MS = 120000;
 
 function resolveApiBaseUrl() {
   const envValue = import.meta.env.VITE_API_BASE_URL?.trim();
