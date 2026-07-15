@@ -4,3 +4,5 @@ dist
 .env.*
 !.env.example
 !.env.production.example
+tsconfig.app.tsbuildinfo
+tsconfig.node.tsbuildinfo
