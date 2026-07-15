@@ -60,7 +60,7 @@ export function ProfilePage() {
             <input value={fullAddress} onChange={(e) => setFullAddress(e.target.value)} />
           </div>
           <div className="field">
-            <label>Номер договора</label>
+            <label>Номер лицевого счёта</label>
             <input value={contractNumber} onChange={(e) => setContractNumber(e.target.value)} />
           </div>
           <button className="button primary" disabled={loading} onClick={saveProfile}>Сохранить</button>

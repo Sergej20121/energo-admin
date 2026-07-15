@@ -127,7 +127,7 @@ export function UsersPage() {
     await exportToExcel('users_export', 'Users', users.map((user) => ({
       Телефон: user.phone,
       Адрес: user.fullAddress || '',
-      Договор: user.contractNumber || '',
+      'Лицевой счёт': user.contractNumber || '',
       Отапливаемая_площадь_м2: user.heatedArea ?? 0,
       Роль: user.role === 'ADMIN' ? 'Администратор' : 'Пользователь',
       Статус: userStatusText(user.status),
@@ -138,7 +138,7 @@ export function UsersPage() {
 
   return (
     <div className="stack">
-      <PageHeader title="Пользователи" subtitle="Создание, активация, блокировка и быстрый контроль по договорам и начислениям." actions={<div className="inline-actions"><button className="button secondary" onClick={() => handleExport().catch((err) => setError(err instanceof Error ? err.message : 'Ошибка экспорта'))}>Экспорт в CSV</button></div>} />
+      <PageHeader title="Пользователи" subtitle="Создание, активация, блокировка и быстрый контроль по лицевого счётам и начислениям." actions={<div className="inline-actions"><button className="button secondary" onClick={() => handleExport().catch((err) => setError(err instanceof Error ? err.message : 'Ошибка экспорта'))}>Экспорт в Excel</button></div>} />
 
       <Notice type="error" text={error} />
       <Notice type="success" text={success} />
@@ -182,7 +182,7 @@ export function UsersPage() {
           </div>
 
           <div className="field">
-            <label>Номер договора</label>
+            <label>Номер лицевого счёта</label>
             <input
               value={contractNumber}
               onChange={(e) => setContractNumber(e.target.value)}
@@ -217,7 +217,7 @@ export function UsersPage() {
         <div className="card">
           <div className="table-toolbar">
             <p>Всего пользователей: {users.length}</p>
-            <button className="button secondary" onClick={() => handleExport().catch((err) => setError(err instanceof Error ? err.message : 'Ошибка экспорта'))}>Скачать CSV</button>
+            <button className="button secondary" onClick={() => handleExport().catch((err) => setError(err instanceof Error ? err.message : 'Ошибка экспорта'))}>Скачать Excel</button>
           </div>
           <div className="table-wrap">
           <table>
@@ -225,7 +225,7 @@ export function UsersPage() {
               <tr>
                 <th>Телефон</th>
                 <th>Адрес</th>
-                <th>Договор</th>
+                <th>Лицевой счёт</th>
                 <th>Счётчики</th>
                 <th>Площадь отопления</th>
                 <th>Последнее начисление</th>

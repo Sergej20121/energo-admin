@@ -91,7 +91,7 @@ export function ReadingsPage() {
       Тип: meterTypeText(reading.meter.type),
       Пользователь: reading.meter.user?.phone || '',
       Адрес: reading.meter.user?.fullAddress || '',
-      Договор: reading.meter.user?.contractNumber || '',
+      'Лицевой счёт': reading.meter.user?.contractNumber || '',
     })));
   }
 
@@ -100,7 +100,7 @@ export function ReadingsPage() {
       <PageHeader
         title="Показания"
         subtitle="Общая история всех переданных показаний по всем счётчикам."
-        actions={<div className="inline-actions"><button className="button secondary" onClick={() => handleExport().catch((err) => setError(err instanceof Error ? err.message : 'Ошибка экспорта'))}>Экспорт в CSV</button></div>}
+        actions={<div className="inline-actions"><button className="button secondary" onClick={() => handleExport().catch((err) => setError(err instanceof Error ? err.message : 'Ошибка экспорта'))}>Экспорт в Excel</button></div>}
       />
 
       <Notice type="error" text={error} />
@@ -109,7 +109,7 @@ export function ReadingsPage() {
       <div className="card">
         <div className="form-grid">
           <div className="field">
-            <label>Поиск по адресу, телефону или договору</label>
+            <label>Поиск по адресу, телефону или лицевому счёту</label>
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
@@ -138,7 +138,7 @@ export function ReadingsPage() {
         <div className="card">
           <div className="table-toolbar">
             <p>Записей по фильтру: {filteredReadings.length}</p>
-            <button className="button secondary" onClick={() => handleExport().catch((err) => setError(err instanceof Error ? err.message : 'Ошибка экспорта'))}>Скачать CSV</button>
+            <button className="button secondary" onClick={() => handleExport().catch((err) => setError(err instanceof Error ? err.message : 'Ошибка экспорта'))}>Скачать Excel</button>
           </div>
           <div className="table-wrap">
           <table>
@@ -150,7 +150,7 @@ export function ReadingsPage() {
                 <th>Тип</th>
                 <th>Пользователь</th>
                 <th>Адрес</th>
-                <th>Договор</th>
+                <th>Лицевой счёт</th>
                 <th>Действия</th>
               </tr>
             </thead>

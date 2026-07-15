@@ -138,7 +138,7 @@ export function MetersPage() {
       Тип: meterTypeText(meter.type),
       Пользователь: meter.user?.phone || '',
       Адрес: meter.user?.fullAddress || '',
-      Договор: meter.user?.contractNumber || '',
+      'Лицевой счёт': meter.user?.contractNumber || '',
       Статус: meter.isActive ? 'Активен' : 'Отключен',
       Последнее_показание: meter.readings?.[0]?.value ?? '',
       Дата_последнего: formatDate(meter.readings?.[0]?.createdAt),
@@ -150,7 +150,7 @@ export function MetersPage() {
       <PageHeader
         title="Счётчики"
         subtitle="Создание счётчиков, добавление показаний и управление статусом."
-        actions={<div className="inline-actions"><button className="button secondary" onClick={() => handleExport().catch((err) => setError(err instanceof Error ? err.message : 'Ошибка экспорта'))}>Экспорт в CSV</button></div>}
+        actions={<div className="inline-actions"><button className="button secondary" onClick={() => handleExport().catch((err) => setError(err instanceof Error ? err.message : 'Ошибка экспорта'))}>Экспорт в Excel</button></div>}
       />
 
       <Notice type="error" text={error} />
@@ -169,7 +169,7 @@ export function MetersPage() {
               <option value="">Выберите пользователя</option>
               {users.map((user) => (
                 <option key={user.id} value={user.id}>
-                  {user.phone} — {user.contractNumber || 'Без договора'}
+                  {user.phone} — {user.contractNumber || 'Без лицевого счёта'}
                 </option>
               ))}
             </select>
@@ -248,7 +248,7 @@ export function MetersPage() {
         <div className="card">
           <div className="table-toolbar">
             <p>Всего счётчиков: {meters.length}</p>
-            <button className="button secondary" onClick={() => handleExport().catch((err) => setError(err instanceof Error ? err.message : 'Ошибка экспорта'))}>Скачать CSV</button>
+            <button className="button secondary" onClick={() => handleExport().catch((err) => setError(err instanceof Error ? err.message : 'Ошибка экспорта'))}>Скачать Excel</button>
           </div>
           <div className="table-wrap">
           <table>

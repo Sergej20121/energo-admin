@@ -108,7 +108,7 @@ export function HeatingChargesPage() {
     await exportToExcel(`heating_${billingMonth}`, 'Heating', lines.map((line) => ({
       Телефон: line.user.phone,
       Адрес: line.user.fullAddress,
-      Договор: line.user.contractNumber,
+      'Лицевой счёт': line.user.contractNumber,
       Метод: line.method === 'BY_METER' ? 'По счётчику' : 'По нормативу',
       Площадь: line.area,
       Предыдущее: line.previousReading ?? '',
@@ -126,7 +126,7 @@ export function HeatingChargesPage() {
       <PageHeader
         title="Начисления по отоплению"
         subtitle="Настройки расчёта, формирование начислений и просмотр расчётных строк."
-        actions={<div className="inline-actions"><button className="button secondary" onClick={() => handleExport().catch((err) => setError(err instanceof Error ? err.message : 'Ошибка экспорта'))} disabled={!lines.length}>Экспорт в CSV</button></div>}
+        actions={<div className="inline-actions"><button className="button secondary" onClick={() => handleExport().catch((err) => setError(err instanceof Error ? err.message : 'Ошибка экспорта'))} disabled={!lines.length}>Экспорт в Excel</button></div>}
       />
 
       <Notice type="error" text={error} />
@@ -257,7 +257,7 @@ export function HeatingChargesPage() {
       <div className="card">
         <div className="table-toolbar">
           <h3 style={{ margin: 0 }}>Расчётные строки</h3>
-          <button className="button secondary" onClick={() => handleExport().catch((err) => setError(err instanceof Error ? err.message : 'Ошибка экспорта'))} disabled={!lines.length}>Скачать CSV</button>
+          <button className="button secondary" onClick={() => handleExport().catch((err) => setError(err instanceof Error ? err.message : 'Ошибка экспорта'))} disabled={!lines.length}>Скачать Excel</button>
         </div>
 
         {!lines.length ? (
@@ -269,7 +269,7 @@ export function HeatingChargesPage() {
                 <tr>
                   <th>Телефон</th>
                   <th>Адрес</th>
-                  <th>Договор</th>
+                  <th>Лицевой счёт</th>
                   <th>Метод</th>
                   <th>Площадь</th>
                   <th>Предыдущее</th>

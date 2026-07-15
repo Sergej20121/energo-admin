@@ -36,7 +36,7 @@ export function PaymentsPage() {
     await exportToExcel('payments_export', 'Payments', payments.map((item) => ({
       Пользователь: item.user?.phone || '',
       Адрес: item.user?.fullAddress || '',
-      Договор: item.user?.contractNumber || '',
+      'Лицевой счёт': item.user?.contractNumber || '',
       Месяц: item.billingMonth,
       Тип: item.type ? typeLabels[item.type] : '',
       Провайдер: item.provider || '',
@@ -50,7 +50,7 @@ export function PaymentsPage() {
 
   return (
     <div className="stack">
-      <PageHeader title="Оплаты" subtitle="Все начисления, статусы и сроки оплаты по пользователям." actions={<div className="inline-actions"><button className="button secondary" onClick={() => handleExport().catch((err) => setError(err instanceof Error ? err.message : 'Ошибка экспорта'))}>Экспорт в CSV</button></div>} />
+      <PageHeader title="Оплаты" subtitle="Все начисления, статусы и сроки оплаты по пользователям." actions={<div className="inline-actions"><button className="button secondary" onClick={() => handleExport().catch((err) => setError(err instanceof Error ? err.message : 'Ошибка экспорта'))}>Экспорт в Excel</button></div>} />
       <Notice type="error" text={error} />
       {!payments.length ? (
         <EmptyState title="Начислений пока нет" subtitle="После генерации платежей они появятся здесь." />
@@ -58,7 +58,7 @@ export function PaymentsPage() {
         <div className="card">
           <div className="table-toolbar">
             <p>Всего начислений: {payments.length}</p>
-            <button className="button secondary" onClick={() => handleExport().catch((err) => setError(err instanceof Error ? err.message : 'Ошибка экспорта'))}>Скачать CSV</button>
+            <button className="button secondary" onClick={() => handleExport().catch((err) => setError(err instanceof Error ? err.message : 'Ошибка экспорта'))}>Скачать Excel</button>
           </div>
           <div className="table-wrap">
           <table>

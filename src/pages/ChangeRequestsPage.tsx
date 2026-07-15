@@ -55,7 +55,7 @@ export function ChangeRequestsPage() {
 
   return (
     <div className="stack">
-      <PageHeader title="Заявки на изменение данных" subtitle="Пользователи не меняют договорные данные напрямую: администратор проверяет и применяет изменения." />
+      <PageHeader title="Заявки на изменение данных" subtitle="Пользователи не меняют лицевой счётные данные напрямую: администратор проверяет и применяет изменения." />
       <Notice type="error" text={error} />
       <Notice type="success" text={success} />
 
@@ -69,7 +69,7 @@ export function ChangeRequestsPage() {
       </div>
 
       {!requests.length ? (
-        <EmptyState title="Заявок нет" subtitle="Когда пользователь попросит изменить адрес, договор или площадь, заявка появится здесь." />
+        <EmptyState title="Заявок нет" subtitle="Когда пользователь попросит изменить адрес, лицевой счёт или площадь, заявка появится здесь." />
       ) : (
         <div className="card">
           <div className="table-wrap">
@@ -94,12 +94,12 @@ export function ChangeRequestsPage() {
                     </td>
                     <td>
                       <div><strong>Адрес:</strong> {item.user?.fullAddress || '—'}</div>
-                      <div><strong>Договор:</strong> {item.user?.contractNumber || '—'}</div>
+                      <div><strong>'Лицевой счёт':</strong> {item.user?.contractNumber || '—'}</div>
                       <div><strong>Площадь:</strong> {item.user?.heatedArea ?? 0} м²</div>
                     </td>
                     <td>
                       {item.fullAddress ? <div><strong>Адрес:</strong> {item.fullAddress}</div> : null}
-                      {item.contractNumber ? <div><strong>Договор:</strong> {item.contractNumber}</div> : null}
+                      {item.contractNumber ? <div><strong>'Лицевой счёт':</strong> {item.contractNumber}</div> : null}
                       {typeof item.heatedArea === 'number' ? <div><strong>Площадь:</strong> {item.heatedArea} м²</div> : null}
                       {item.comment ? <div className="muted"><strong>Комментарий:</strong> {item.comment}</div> : null}
                     </td>

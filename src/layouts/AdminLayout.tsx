@@ -19,7 +19,7 @@ const navGroups: NavGroup[] = [
     title: 'Абоненты и счётчики',
     items: [
       { to: '/users', label: 'Пользователи' },
-      { to: '/contracts', label: 'Реестр договоров' },
+      { to: '/contracts', label: 'Реестр лицевых счетов' },
       { to: '/meters', label: 'Счётчики' },
       { to: '/readings', label: 'Показания' },
     ],
@@ -73,7 +73,7 @@ export function AdminLayout() {
         <div className="brand-wrap">
           <div className="brand-kicker">Heating Control</div>
           <div className="brand">Веб-админка</div>
-          <div className="brand-text">Управление абонентами, договорами, начислениями и аудитом действий.</div>
+          <div className="brand-text">Управление абонентами, лицевыми счетами, начислениями и аудитом действий.</div>
         </div>
 
         <div className="sidebar-summary">

@@ -3,6 +3,4 @@ dist
 .env
 .env.*
 !.env.example
-npm-debug.log*
-.DS_Store
-tsconfig.tsbuildinfo
+!.env.production.example

@@ -86,7 +86,7 @@ export function NotificationsPage() {
                 <option value="">Выберите пользователя</option>
                 {users.map((item) => (
                   <option key={item.id} value={item.id}>
-                    {item.phone} — {item.contractNumber || 'Без договора'}
+                    {item.phone} — {item.contractNumber || 'Без лицевого счёта'}
                   </option>
                 ))}
               </select>
